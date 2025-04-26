@@ -9,7 +9,17 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "appleTeamId": "YOUR_TEAM_ID",
+      "bundleIdentifier": "com.example.rnmmkv.widget.demo",
+      "entitlements": {
+        "com.apple.security.application-groups": [
+          "group.com.example.rnmmkv.widget.demo"
+        ]
+      },
+      "infoPlist": {
+        "AppGroup": "group.com.example.rnmmkv.widget.demo"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -32,7 +42,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "@bacons/apple-targets"
     ],
     "experiments": {
       "typedRoutes": true
