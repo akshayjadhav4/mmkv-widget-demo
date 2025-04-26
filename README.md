@@ -29,7 +29,7 @@ A demonstration project showcasing the integration of MMKV (Memory-Mapped Key-Va
 
 4. Start the development server:
    ```bash
-   npx expo start
+   npm run ios
    ```
 
 ## Development
