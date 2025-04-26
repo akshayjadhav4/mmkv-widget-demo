@@ -1,0 +1,28 @@
+diff --git a/node_modules/@bacons/apple-targets/build/withXcodeChanges.js b/node_modules/@bacons/apple-targets/build/withXcodeChanges.js
+index dc4f5cf..1a5f06f 100644
+--- a/node_modules/@bacons/apple-targets/build/withXcodeChanges.js
++++ b/node_modules/@bacons/apple-targets/build/withXcodeChanges.js
+@@ -12,6 +12,7 @@ const target_1 = require("./target");
+ const XCBuildConfiguration_json_1 = __importDefault(require("./template/XCBuildConfiguration.json"));
+ const TemplateBuildSettings = XCBuildConfiguration_json_1.default;
+ const withXcparse_1 = require("./withXcparse");
++const injectBridgingHeaderToWidgetConfigurationList = require("../../../../plugin/withMMKVBridgingHeader");
+ const assert_1 = __importDefault(require("assert"));
+ const withXcodeChanges = (config, props) => {
+     return (0, withXcparse_1.withXcodeProjectBeta)(config, async (config) => {
+@@ -592,6 +593,7 @@ function createWidgetConfigurationList(project, { name, cwd, bundleId, deploymen
+             TARGETED_DEVICE_FAMILY: "1,2",
+         },
+     });
++    injectBridgingHeaderToWidgetConfigurationList(debugBuildConfig);
+     const releaseBuildConfig = xcode_1.XCBuildConfiguration.create(project, {
+         name: "Release",
+         buildSettings: {
+@@ -631,6 +633,7 @@ function createWidgetConfigurationList(project, { name, cwd, bundleId, deploymen
+             TARGETED_DEVICE_FAMILY: "1,2",
+         },
+     });
++    injectBridgingHeaderToWidgetConfigurationList(releaseBuildConfig);
+     const configurationList = xcode_1.XCConfigurationList.create(project, {
+         buildConfigurations: [debugBuildConfig, releaseBuildConfig],
+         defaultConfigurationIsVisible: 0,
